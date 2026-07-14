@@ -1,0 +1,44 @@
+{
+	"name": "DS_Adlsgen2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_adls_bronze",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"bronze_path": {
+				"type": "String"
+			},
+			"table_name": {
+				"type": "String"
+			},
+			"p_year": {
+				"type": "String"
+			},
+			"p_month": {
+				"type": "String"
+			},
+			"p_day": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat(dataset().table_name, '_raw_', dataset().p_year, dataset().p_month, dataset().p_day, '.parquet')",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat(dataset().bronze_path, '/year=', dataset().p_year, '/month=', dataset().p_month, '/day=', dataset().p_day)",
+					"type": "Expression"
+				}
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
