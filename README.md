@@ -157,7 +157,12 @@ The repository is organized by platform components to separate orchestration, pr
 
 The operational source database is normalized to support transactional workloads. Orders and OrderItems capture business transactions, while Customers, Products, Categories, and Branches represent master data.
 
+> **Source ER Diagram Placeholder**
 
+```text
+docs/
+└── architecture/
+    └── source-er-diagram.png
 ```
 
 ![Source ER Diagram](docs/architecture/source-er-diagram.png)
@@ -182,6 +187,11 @@ The model consists of:
 
 > **Gold Star Schema Placeholder**
 
+```text
+docs/
+└── architecture/
+    └── star-schema-diagram.png
+```
 
 ![Gold Star Schema](docs/architecture/star-schema-diagram.png)
 
