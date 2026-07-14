@@ -20,11 +20,11 @@
 
 ## Overview
 
-Coffee Bean Analytics is an **end-to-end Azure Data Engineering project** that demonstrates how to build a **metadata-driven, production-oriented data platform** using the Medallion Architecture.
+Coffee Bean Analytics demonstrates an **end-to-end metadata-driven Azure Data Engineering solution** built using the Medallion Architecture.
 
-Transactional data is ingested from **NeonDB (PostgreSQL)** through **Azure Data Factory**, stored in **Azure Data Lake Storage Gen2**, transformed using **Azure Databricks**, and published as a **Star Schema** for analytical reporting.
+The pipeline ingests transactional data from **NeonDB (PostgreSQL)**, orchestrates ingestion through **Azure Data Factory**, performs scalable transformations in **Azure Databricks**, and publishes analytics-ready dimensional models into the Gold layer.
 
-The project focuses on building a reusable engineering framework rather than table-specific pipelines by implementing:
+The solution emphasizes **reusability**, **maintainability**, and **production-ready engineering practices**, including::
 
 - Metadata-driven pipeline orchestration
 - Full & Incremental data ingestion
@@ -73,21 +73,21 @@ The project focuses on building a reusable engineering framework rather than tab
                             │
                             ▼
               Azure Databricks (Bronze → Silver)
-        • Data Quality Validation
-        • Duplicate Removal
-        • Schema Drift Detection
-        • Schema Evolution
-        • SCD Type 2
-        • Delta MERGE
+                • Data Quality Validation
+                • Duplicate Removal
+                • Schema Drift Detection
+                • Schema Evolution
+                • SCD Type 2
+                • Delta MERGE
                             │
                             ▼
               Silver Layer (Delta Lake)
                             │
                             ▼
               Azure Databricks (Silver → Gold)
-        • Star Schema Modeling
-        • Dimension Building
-        • Fact Table Generation
+                • Star Schema Modeling
+                • Dimension Building
+                • Fact Table Generation
                             │
                             ▼
                Gold Layer (Delta Lake)
@@ -102,16 +102,87 @@ The project focuses on building a reusable engineering framework rather than tab
 
 The following diagram illustrates the overall system architecture, showing the flow of data from the operational source system to the analytical layer.
 
-> **Architecture Diagram Placeholder**
-
-```text
-docs/
-└── architecture/
-    └── architecture-diagram.png
-```
-
-Once the diagram is added, it will appear below.
 
 ![Architecture Diagram](docs/architecture/architecture-diagram.png)
+
+---
+
+# Technology Stack
+
+| Component | Technology |
+|------------|------------|
+| **Source Database** | NeonDB (PostgreSQL) |
+| **Metadata Repository** | Azure SQL Database |
+| **Orchestration** | Azure Data Factory |
+| **Processing Engine** | Azure Databricks |
+| **Storage** | Azure Data Lake Storage Gen2 |
+| **Bronze Format** | Parquet |
+| **Silver & Gold Format** | Delta Lake |
+| **Governance** | Unity Catalog |
+| **Secrets Management** | Azure Key Vault |
+| **Programming Languages** | Python, PySpark, SQL |
+
+---
+
+# 📊 Project Statistics
+
+| Metric | Value |
+|--------|-------|
+| **Source Tables** | 6 |
+| **Silver Tables** | 6 |
+| **Gold Tables** | 4 |
+| **Azure Services** | 6 |
+| **Databricks Notebooks** | 2 |
+| **Metadata-Driven** | ✅ Yes |
+| **SCD Type 2 Tables** | Customers, Products, Branches |
+| **Incremental Load** | Customers, Orders, OrderItems |
+| **Full Load** | Categories, Products, Branches |
+
+---
+
+# Repository Tour
+
+The repository is organized by platform components to separate orchestration, processing logic, database objects, and documentation.
+
+| Folder | Description |
+|---------|-------------|
+| **/adf** | Azure Data Factory pipelines, datasets, linked services, and triggers |
+| **/databricks** | PySpark notebooks implementing Bronze → Silver and Silver → Gold transformations |
+| **/sql** | Source schema, metadata tables, stored procedures, and initialization scripts |
+| **/docs/architecture** | Architecture diagram, Source ER Diagram, Star Schema, and ADF pipeline screenshots |
+
+---
+
+# Source ER Diagram
+
+The operational source database is normalized to support transactional workloads. Orders and OrderItems capture business transactions, while Customers, Products, Categories, and Branches represent master data.
+
+
+```
+
+![Source ER Diagram](docs/architecture/source-er-diagram.png)
+
+---
+
+# Gold Star Schema
+
+The curated Gold layer transforms normalized Silver tables into a dimensional model optimized for analytical workloads.
+
+The model consists of:
+
+### Dimensions
+
+- DimCustomer
+- DimBranch
+- DimProduct
+
+### Fact
+
+- FactSales
+
+> **Gold Star Schema Placeholder**
+
+
+![Gold Star Schema](docs/architecture/star-schema-diagram.png)
 
 ---
