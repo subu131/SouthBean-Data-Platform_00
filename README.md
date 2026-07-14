@@ -78,83 +78,20 @@ The solution emphasizes **reusability**, **maintainability**, and **production-r
 
 ---
 
-# Project Statistics
 
-## Source System
+# 📊 Project Statistics
 
-**NeonDB (PostgreSQL)**
-
-### Source Tables
-
-- Categories
-- Products
-- Customers
-- Branches
-- Orders
-- OrderItems
-
----
-
-## Metadata Repository (Azure SQL)
-
-- PipelineConfig
-- TransformationConfig
-- Watermark
-
----
-
-## Gold Model
-
-### Dimensions
-
-- DimCustomer
-- DimBranch
-- DimProduct
-
-### Fact
-
-- FactSales
-
----
-
-## Pipeline Characteristics
-
-- Metadata-Driven Architecture
-- Medallion Architecture
-- Watermark-Based Incremental Loading
-- Late-arriving Data Handling
-- SCD Type 2
-- Schema Drift Detection
-- Explicit Schema Evolution
-- Delta Lake MERGE
-- Azure Key Vault Integration
-- Unity Catalog Governance
-
----
-
-## Loading Strategy
-
-### Full Load
-
-- Categories
-- Products
-- Branches
-
-### Incremental Load
-
-- Customers
-- Orders
-- OrderItems
-
----
-
-## Historical Tracking
-
-### SCD Type 2
-
-- Customers
-- Products
-- Branches
+| Metric | Value |
+|--------|-------|
+| Source Tables | 6 |
+| Silver Tables | 6 |
+| Gold Tables | 4 |
+| Azure Services | 6 |
+| Databricks Notebooks | 2 |
+| Metadata-Driven | Yes |
+| SCD Type 2 Tables | Customers, Products, Branches |
+| Incremental Load | Customers, Orders, OrderItems |
+| Full Load | Categories, Products, Branches |
 
 ---
 
