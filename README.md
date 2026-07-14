@@ -53,7 +53,6 @@ The solution emphasizes **reusability**, **maintainability**, and **production-r
 - [Gold Star Schema](#gold-star-schema)
 - [Medallion Architecture](#medallion-architecture)
 - [Key Architectural Decisions](#key-architectural-decisions)
-- [Repository Structure](#repository-structure)
 - [Future Improvements](#future-improvements)
 - [Lessons Learned](#lessons-learned)
 - [License](#license)
@@ -133,7 +132,7 @@ The following diagram illustrates the overall system architecture, showing the f
 | **Gold Tables** | 4 |
 | **Azure Services** | 6 |
 | **Databricks Notebooks** | 2 |
-| **Metadata-Driven** | ✅ Yes |
+| **Metadata-Driven** | Yes |
 | **SCD Type 2 Tables** | Customers, Products, Branches |
 | **Incremental Load** | Customers, Orders, OrderItems |
 | **Full Load** | Categories, Products, Branches |
@@ -306,12 +305,12 @@ Implemented both Full and Incremental loading strategies.
 **Full Load**
 
 - Categories
-- Products
 - Branches
 
 **Incremental Load**
 
 - Customers
+- Products
 - Orders
 - OrderItems
 
@@ -508,37 +507,7 @@ Separated responsibilities into three independent layers.
 - Independent evolution
 - Improved maintainability
 
----
 
-# Repository Structure
-
-```text
-CoffeeBean-Azure-Data-Engineering/
-│
-├── README.md
-│
-├── adf/
-│   ├── pipelines/
-│   ├── datasets/
-│   ├── linkedServices/
-│   └── triggers/
-│
-├── databricks/
-│   ├── bronze_to_silver.py
-│   └── silver_to_gold.py
-│
-├── sql/
-│   ├── metadata/
-│   ├── source/
-│   └── procedures/
-│
-└── docs/
-    └── architecture/
-        ├── architecture-diagram.png
-        ├── source-er-diagram.png
-        ├── star-schema-diagram.png
-        └── adf-pipeline.png
-```
 
 ---
 
