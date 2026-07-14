@@ -34,6 +34,17 @@ The solution emphasizes **reusability**, **maintainability**, and **production-r
 
 ---
 
+## Repository Tour
+
+| Folder | Description |
+|---------|-------------|
+| `/adf` | Azure Data Factory pipelines, datasets, linked services, and triggers |
+| `/databricks` | PySpark notebooks implementing Bronze→Silver and Silver→Gold transformations |
+| `/sql` | Source schema, metadata tables, stored procedures, and initialization scripts |
+| `/docs/architecture` | Architecture diagrams, ER model, Star Schema, and pipeline screenshots |
+
+---
+
 # Table of Contents
 
 - Overview
@@ -147,7 +158,7 @@ The solution emphasizes **reusability**, **maintainability**, and **production-r
 
 ---
 
-# Architecture Diagram
+## Architecture Diagram
 
 ![Architecture](docs/architecture/architecture-diagram.png)
 
